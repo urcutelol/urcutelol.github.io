@@ -1,23 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B x P</title>
-  <link rel="stylesheet" href="menu.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Quest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #1a1a1a;
+            border: 2px solid #00aaff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        .container h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #00aaff;
+            margin-bottom: 20px;
+        }
+        .goals {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .goals p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .goals input {
+            margin-right: 10px;
+        }
+        .caution {
+            color: #ff5555;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #00aaff;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="menu">
-      <button onclick="Paragraph()" class="menu-button heart-button">
-        ❤️
-      </button>
+    <div class="container">
+        <h1>QUEST INFO</h1>
+        <p>DAILY QUEST - TRAIN TO BECOME A FORMIDABLE COMBATANT</p>
+        <div class="goals" id="goals-container">
+            <!-- Goals will be generated here -->
+        </div>
+        <p class="caution">CAUTION! - IF THE DAILY QUEST REMAINS INCOMPLETE, PENALTIES WILL BE GIVEN ACCORDINGLY.</p>
+        <div class="icon">⏱️</div>
     </div>
-  </div>
-  <script>
-    function Paragraph(){
-        window.location.href = "para.html";
-    }
-  </script>
+
+    <script>
+        const bodyweightExercises = [
+            'Push-ups',
+            'Sit-ups',
+            'Squats',
+            'Lunges',
+            'Plank',
+            'Burpees',
+            'Mountain Climbers',
+            'Jumping Jacks',
+            'High Knees',
+            'Bicycle Crunches',
+            'Leg Raises',
+            'Wall Sit',
+            'Superman',
+            'Tricep Dips',
+            'Calf Raises',
+            'Russian Twists',
+            'Single Leg Bridges',
+            'Flutter Kicks',
+            'Bear Crawls',
+            'Side Plank',
+            'Box Jumps',
+            'Jump Rope',
+            'Inchworms',
+            'Pistol Squats',
+            'Plank Jacks',
+            'Tuck Jumps',
+            'Handstand Practice',
+            'Wall Push-offs',
+            'Chair Dips',
+            'Donkey Kicks',
+            'Side Lunges',
+            'Crab Walk',
+            'Single Leg Deadlifts',
+            'Plyometric Lunges',
+            'Spiderman Push-ups',
+            'Reverse Crunches',
+            'Lateral Leg Raises',
+            'Pike Push-ups',
+            'Skater Hops',
+            'Diamond Push-ups',
+            'Bodyweight Rows',
+            'Bulgarian Split Squats',
+            'Hollow Body Hold',
+            'Decline Push-ups',
+            'Bridge',
+            'Jump Squats',
+            'Bear Plank',
+            'Wall Handstand',
+            'Plank to Push-up'
+        ];
+
+        function generateNewGoals() {
+            const goalsContainer = document.getElementById('goals-container');
+            goalsContainer.innerHTML = ''; // Clear previous goals
+
+            // Shuffle exercises array
+            const shuffledExercises = shuffleArray(bodyweightExercises);
+
+            // Randomly choose up to 4 exercises
+            const numExercises = Math.min(getRandomNumber(3, 5), shuffledExercises.length);
+            const selectedExercises = shuffledExercises.slice(0, numExercises);
+
+            // Display selected exercises with random counters
+            selectedExercises.forEach(exercise => {
+                const counter = `[0/${getRandomNumber(30, 100)}]`;
+                const goalElement = document.createElement('p');
+                goalElement.innerHTML = `
+                    <input type="checkbox" class="goal-checkbox"> ${exercise} 
+                    <span class="counter">${counter}</span>
+                `;
+                goalsContainer.appendChild(goalElement);
+            });
+
+            // Reset event listeners for checkboxes
+            const checkboxes = document.querySelectorAll('.goal-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', checkAllChecked);
+            });
+        }
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function checkAllChecked() {
+            const checkboxes = document.querySelectorAll('.goal-checkbox');
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+            if (allChecked) {
+                generateNewGoals();
+            }
+        }
+
+        // Initial generation of goals when the page loads
+        generateNewGoals();
+    </script>
 </body>
 </html>
