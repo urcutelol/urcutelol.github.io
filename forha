@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <title>read me</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        h1 {
+            margin: 0;
+            color: pink;
+        }
+        p {
+            margin: 0;
+            line-height: 1.6;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.2rem; /* Increased font size for the main paragraph */
+        }
+        u {
+            color: pink;
+            text-decoration-color: pink;
+        }
+        b {
+            color: pink;
+        }
+        .small-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .flower {
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <b>Hey</b>, I know you’re probably super stressed right now. <br>
+        I just wanted to let you know <br>
+        you’re going to do, <b>amazing</b> tomorrow. <br>
+        <br>
+    </p>
+    <p class="small-text">
+        Have a <b>good night</b>, and tomorrow just walk in there and <b>crush</b> that stupid midterm.<br>
+        You’ve got this!
+    </p>
+
+    <script>
+        const emojis = ['🌷', '💐', '🌹'];
+        const numEmojis = 10; 
+
+        for (let i = 0; i < numEmojis; i++) {
+            const emoji = document.createElement('div');
+            emoji.classList.add('flower');
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 5 + 5 + 's'; // Slower fall speed
+            emoji.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(emoji);
+        }
+    </script>
+</body>
+</html>
