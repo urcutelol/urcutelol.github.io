@@ -3,26 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prasan</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <title>You're cute</title>
     <style>
         body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            text-align: center;
+            flex-direction: column;
         }
-        .message {
-            font-size: 24px;
-            color: #333;
+        h1 {
+            margin: 0;
+            color: pink;
+        }
+        h2 {
+            margin: 10px 0 0;
+        }
+        h4 {
+            margin: 25px 0 0;
+        }
+        .thin-text {
+            font-weight: normal;
+        }
+        .button {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #1565c0;
+        }
+        .discord-button {
+            background-color: #7289da;
+        }
+        .discord-button:hover {
+            background-color: #5b6ead;
+        }
+        .button img {
+            width: 24px;
+            height: 24px;
+        }
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        u {
+            color: pink;
+            text-decoration-color: pink;
         }
     </style>
 </head>
 <body>
-    <div class="message">
-        you're cute - prasan
-    </div>
+    <u><h1>Prasan</h1></u>
+    <h2>I find you very <u>cute</u></h2> 
 </body>
 </html>
